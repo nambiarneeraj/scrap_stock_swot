@@ -3,7 +3,7 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 
 const CONFIG = {
-  headless: 'new',
+  headless: 'new', // Updated to new headless mode
   timeout: 30000,
   userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
   popupSelectors: ['#wzrk-cancel', '.modal-close', '.close', '.btn-close', '.overlay-close'],
@@ -43,7 +43,7 @@ async function createBrowser() {
       '--single-process',
       '--no-zygote'
     ],
-    
+    // This will use the PUPPETEER_EXECUTABLE_PATH environment variable set in the GitHub Actions workflow
     executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined
   });
 }
@@ -158,7 +158,7 @@ async function scrapeMCEssentials(page) {
 async function scrapeSWOTAnalysis(page) {
   try {
     console.log('Looking for SWOT tab...');
-    await delay(2000); 
+    await delay(2000); // Keep this delay as it might be crucial for content to load after tab click
 
     const swotTab = await findClickableElement(page, CONFIG.swotSelectors);
 
@@ -252,7 +252,7 @@ async function handlePopups(page) {
       console.log(`Closed popup with selector: ${selector}`);
       await delay(500);
     } catch (err) {
-      
+      // Continue if not found
     }
   }
 }
@@ -273,46 +273,24 @@ async function handlePopups(page) {
     ];
 
     const browser = await createBrowser();
+    const page = await browser.newPage(); // Create a single page to reuse for sequential scraping
+    await page.setUserAgent(CONFIG.userAgent);
+    await page.setDefaultTimeout(CONFIG.timeout);
 
-   
-    const scrapePromises = companies.map(async (company) => {
-      const page = await browser.newPage(); 
-      await page.setUserAgent(CONFIG.userAgent);
-      await page.setDefaultTimeout(CONFIG.timeout);
+    const results = [];
 
+    for (const company of companies) {
       const url = `https://www.moneycontrol.com/india/stockpricequote/${company.category}/${company.slug}/${company.sectorCode}`;
       console.log(`\nFetching data for ${company.name}...`);
 
-      try {
-        const companyData = await scrapeCompanyDataWithRetry(page, url, company.name);
-        console.log(`Completed ${company.name}`);
-        return companyData;
-      } catch (error) {
-        console.error(`Failed to scrape ${company.name}:`, error.message);
-        
-        return {
-          company: company.name,
-          essentials: null,
-          strengths: null,
-          weaknesses: null,
-          opportunities: null,
-          threats: null,
-          timestamp: new Date().toLocaleDateString('en-GB')
-        };
-      } finally {
-        await page.close();
-      }
-    });
+      const companyData = await scrapeCompanyDataWithRetry(page, url, company.name);
+      results.push(companyData);
 
-  
-    const settledResults = await Promise.allSettled(scrapePromises);
+      console.log(`Completed ${company.name}`);
+      // Removed the artificial delay here for optimization
+    }
 
-    
-    const results = settledResults
-      .filter(result => result.status === 'fulfilled')
-      .map(result => result.value);
-
-    await browser.close();
+    await browser.close(); // Close the browser after all scraping is done
 
     const sheetData = results.map(r => ({
       'Company': r.company,
