@@ -19,7 +19,7 @@ jobs:
       env:
         PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: false
     - name: Upload results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4 # Changed from v3 to v4
       if: always()
       with:
         name: stock-data
