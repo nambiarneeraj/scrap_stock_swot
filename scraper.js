@@ -3,7 +3,7 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 
 const CONFIG = {
-  headless: 'new', // Updated to new headless mode
+  headless: 'new',
   timeout: 30000,
   userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
   popupSelectors: ['#wzrk-cancel', '.modal-close', '.close', '.btn-close', '.overlay-close'],
@@ -20,7 +20,7 @@ const CONFIG = {
   sheetName: 'StockData',
   serviceAccount: {
     email: 'stockmarketdata@stock-data-461213.iam.gserviceaccount.com',
-    privateKey: '-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCossofJJiuSPO2\nOJNpdjwklekzYvD9Huh0GfOXbxoNCoecDJ7PeEr2pcLyLRbo+6DJ18/E8HGmLr4+\nWMrnL5UYCANoSGHkqJaC9jMvpJdrflOZEgfn1k7VeSAxYa0Ja7p3eIqfILVbKwq3\nnyKala/HzyhN2/JCWe5enooK/OAAuEFRDyy9j7653d/xVf9mxxuPy4kGgbkYDfxc\n+d9nkqhNoWtuKMV2LC+1PtJcTP5npjR/xIpy8y8QF/Xzta43d+8lGIoZArr4mAxa\nuI8YtHvgTdHRkmoODTYJiWbEjUbkkej7FXqJSWNu3W8erCZxvoSGItzhHaHWkjBv\n+ZSOfYJlAgMBAAECggEADmwQ9FsJyoYy5g/6jXhhAxrl1h5ntKjg/cjLygh8VUN7\n/UIYjNG5Gh9o7F26da4wotDjOSNgZyRCRplxgnsCgT/Xurr/BrAuN4GaaQ1//Hdo\ntWj7NnDCsJfFKGbNukTbEVeqBWY9QU8+s7Zt6OiFhjMWb2f8U0iiixt9EoKbGLSE\nLqmBuLeUBrceda4NT1U1m+QbynbkyfrYn1E21NsmN3Wq743X+A2tUNx5VvuilWJK\niAps/fi93GfBY1n2UoH47Xy4W5klr3+hc5Ru1zHTADd5gcCDQh8qxMGQku8ZB8Up\nQDEO6y2ehWPUoxSBXSYT3btxa+Z7zA74tK4npXNaiQKBgQDlkW2ka6WbB0zJiQV+\nWLXjqKBIDVQ4uwbPGG8kJ62Wp19AjvUAzttY9TqPrAyqQ8/MzYjp4G9UWup8bc3B\nZeHtk0c3vg4dh2K5wVOGPE8QHJmO3EZ2GEJvnH7r74GyjlMrozeoIQB8Pulb3kst\nAKHNCGYZcxpYZUlgLdRFW1zL3wKBgQC8HzaiMHtw2QqcEGrU/aZB4vXBKEggwVi3\nuT7NwrN9i3hk74GAgUMIRfT9iVUcVONwrFKJEZqwfcMmqU0Cax0v7OfrK2LM9+a+\nqwludYqyPLEOuPb+bAD6s1FCUQe+NJbSl4cokhO2tVHejhfrwA5SwmXAMDABVb45\nT01Wo1Y6OwKBgHI1M3LFCxJhQ1ZQEKeWwoaL8ZFm8Ct5AB4vbbty8e0tPzoC5OiO\nAJn1BjlLwtFCAzNEXYTc3wX8ZQOaLO62HPvwdVHJ/4O5QuhewYrangrJ76se8v71\nerfEB3ChKskF/WKMRLgkEvW85qOJp6Sv188FCqZGmSi42xQ6OIx4s2XJAoGAXo8Z\n+SCBi9GtAZFHAdSVs1yPxw2mY8CMBZ15sheB/UMTuzigUaWnugrgAGj9fQY2ZLZZ\nrkhJBxnP9Cj5apPI0gQ09wKR4RFizMhQL1Op6bmUDiBvFqfXPizQVZNBXxw0C5ra\n90ul2Rr/Ee0+nOOmz3ajip0uJB2jRk9UQo5Lk20CgYAlTYu0NoY+yFSrdLiLnf+I\nhWJnG3wRgARdqdXht6mWYBMMwhJWnIBQ3h7wUCyWQ/Xk7BiTO42Xv/1m7vlmkULP\nuR25KA8Yn6rc+w0sL/M/AM54G8PByqKACdHZBMKi3d8KzCiUvVfU6cK6C3FgR40Q\nFIDsaOSNMwF6LBpQUoWWCw==\n-----END PRIVATE KEY-----\n'
+    privateKey: '-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCossofJJiuSPO2\nOJNpdjwklekzYvD9Huh0GfOXbxoNCoecDJ7PeEr2pcLyLRbo+6DJ18/E8HGmLr4+\nWMrnL5UYCANoSGHkqJaC9jMvpJdrflOZEgfn1k7VeSAxYa0Ja7p3eIqfILVbKwq3\nnyKala/HzyhN2/JCWe5enooK/OAAuEFRDyy9j7653d/xVf9mxxuPy4kGgbkYDfxc\n+d9nkqhNoWtuKMV2LC+1PtJcTP5npjR/xIpy8y8QF/Xzta43d+8lGIoZArr4mAxa\nuI8YtHvgTdHRkmoODTYJiWbEjUbkkej7FXqJSWNu3W8erCZnvoSGItzhHaHWkjBv\n+ZSOfYJlAgMBAAECggEADmwQ9FsJyoYy5g/6jXhhAxrl1h5ntKjg/cjLygh8VUN7\n/UIYjNG5Gh9o7F26da4wotDjOSNgZyRCRplxgnsCgT/Xurr/BrAuN4GaaQ1//Hdo\ntWj7NnDCsJfFKGbNukTbEVeqBWY9QU8+s7Zt6OiFhjMWb2f8U0iiixt9EoKbGLSE\nLqmBuLeUBrceda4NT1U1m+QbynbkyfrYn1E21NsmN3Wq743X+A2tUNx5VvuilWJK\niAps/fi93GfBY1n2UoH47Xy4W5klr3+hc5Ru1zHTADd5gcCDQh8qxMGQku8ZB8Up\nQDEO6y2ehWPUoxSBXSYT3btxa+Z7zA74tK4npXNaiQKBgQDlkW2ka6WbB0zJiQV+\nWLXjqKBIDVQ4uwbPGG8kJ62Wp19AjvUAzttY9TqPrAyqQ8/MzYjp4G9UWup8bc3B\nZeHtk0c3vg4dh2K5wVOGPE8QHJmO3EZ2GEJvnH7r74GyjlMrozeoIQB8Pulb3kst\nAKHNCGYZcxpYZUlgLdRFW1zL3wKBgQC8HzaiMHtw2QqcEGrU/aZB4vXBKEggwVi3\nuT7NwrN9i3hk74GAgUMIRfT9iVUcVONwrFKJEZqwfcMmqU0Cax0v7OfrK2LM9+a+\nqwludYqyPLEOuPb+bAD6s1FCUQe+NJbSl4cokhO2tVHejhfrwA5SwmXAMDABVb45\nT01Wo1Y6OwKBgHI1M3LFCxJhQ1ZQEKeWwoaL8ZFm8Ct5AB4vbbty8e0tPzoC5OiO\nAJn1BjlLwtFCAzNEXYTc3wX8ZQOaLO62HPvwdVHJ/4O5QuhewYrangrJ76se8v71\nerfEB3ChKskF/WKMRLgkEvW85qOJp6Sv188FCqZGmSi42xQ6OIx4s2XJAoGAXo8Z\n+SCBi9GtAZFHAdSVs1yPxw2mY8CMBZ15sheB/UMTuzigUaWnugrgAGj9fQY2ZLZZ\nrkhJBxnP9Cj5apPI0gQ09wKR4RFizMhQL1Op6bmUDiBvFqfXPizQVZNBXxw0C5ra\n90ul2Rr/Ee0+nOOmz3ajip0uJB2jRk9UQo5Lk20CgYAlTYu0NoY+yFSrdLiLnf+I\nhWJnG3wRgARdqdXht6mWYBMMwhJWnIBQ3h7wUCyWQ/Xk7BiTO42Xv/1m7vlmkULP\nuR25KA8Yn6rc+w0sL/M/AM54G8PByqKACdHZBMKi3d8KzCiUvVfU6cK6C3FgR40Q\nFIDsaOSNMwF6LBpQUoWWCw==\n-----END PRIVATE KEY-----\n'
   }
 };
 
@@ -43,6 +43,7 @@ async function createBrowser() {
       '--single-process',
       '--no-zygote'
     ],
+    
     executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined
   });
 }
@@ -109,7 +110,7 @@ async function scrapeCompanyDataWithRetry(page, url, companyName, retries = 2) {
 async function scrapeCompanyData(page, url, companyName) {
   try {
     console.log(`Navigating to ${url}`);
-    await page.goto(url, { 
+    await page.goto(url, {
       waitUntil: 'networkidle2',
       timeout: CONFIG.timeout
     });
@@ -157,10 +158,10 @@ async function scrapeMCEssentials(page) {
 async function scrapeSWOTAnalysis(page) {
   try {
     console.log('Looking for SWOT tab...');
-    await delay(2000);
-    
+    await delay(2000); 
+
     const swotTab = await findClickableElement(page, CONFIG.swotSelectors);
-    
+
     if (!swotTab) {
       console.log('SWOT tab not found with standard selectors, trying alternative approach');
       const links = await page.$$('a');
@@ -229,7 +230,7 @@ async function findClickableElement(page, selectors) {
           const style = window.getComputedStyle(el);
           return style && style.display !== 'none' && style.visibility !== 'hidden' && el.offsetHeight > 0;
         }, element);
-        
+
         if (isVisible) {
           console.log(`Found visible element with selector: ${selector}`);
           return element;
@@ -251,7 +252,7 @@ async function handlePopups(page) {
       console.log(`Closed popup with selector: ${selector}`);
       await delay(500);
     } catch (err) {
-      // Continue if not found
+      
     }
   }
 }
@@ -272,25 +273,47 @@ async function handlePopups(page) {
     ];
 
     const browser = await createBrowser();
-    const page = await browser.newPage();
-    await page.setUserAgent(CONFIG.userAgent);
-    await page.setDefaultTimeout(CONFIG.timeout);
 
-    const results = [];
+   
+    const scrapePromises = companies.map(async (company) => {
+      const page = await browser.newPage(); 
+      await page.setUserAgent(CONFIG.userAgent);
+      await page.setDefaultTimeout(CONFIG.timeout);
 
-    for (const company of companies) {
       const url = `https://www.moneycontrol.com/india/stockpricequote/${company.category}/${company.slug}/${company.sectorCode}`;
       console.log(`\nFetching data for ${company.name}...`);
-      
-      const companyData = await scrapeCompanyDataWithRetry(page, url, company.name);
-      results.push(companyData);
-      
-      console.log(`Completed ${company.name}`);
-      await delay(2000);
-    }
+
+      try {
+        const companyData = await scrapeCompanyDataWithRetry(page, url, company.name);
+        console.log(`Completed ${company.name}`);
+        return companyData;
+      } catch (error) {
+        console.error(`Failed to scrape ${company.name}:`, error.message);
+        
+        return {
+          company: company.name,
+          essentials: null,
+          strengths: null,
+          weaknesses: null,
+          opportunities: null,
+          threats: null,
+          timestamp: new Date().toLocaleDateString('en-GB')
+        };
+      } finally {
+        await page.close();
+      }
+    });
+
+  
+    const settledResults = await Promise.allSettled(scrapePromises);
+
+    
+    const results = settledResults
+      .filter(result => result.status === 'fulfilled')
+      .map(result => result.value);
 
     await browser.close();
-    
+
     const sheetData = results.map(r => ({
       'Company': r.company,
       'MC Essentials': r.essentials,
@@ -302,7 +325,7 @@ async function handlePopups(page) {
     }));
 
     await saveToGoogleSheets(sheetData);
-    
+
     console.log('\nScraping completed. Data saved to Google Sheets');
   } catch (error) {
     console.error('Fatal error:', error);
