@@ -1,36 +1,26 @@
-name: Run Puppeteer Script
-
-on:
-  workflow_dispatch:  
-  schedule:
-    - cron: '0 8 * * *'  
+name: Scrape Stock Data
+on: [push, schedule]
 
 jobs:
-  run-script:
+  scrape:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Cache node modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Puppeteer script
-        env:
-          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-          GOOGLE_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
-        run: node scraper.js
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    - name: Install dependencies
+      run: |
+        npm install
+        npm install puppeteer
+    - name: Run scraper
+      timeout-minutes: 15
+      run: node scraper.js
+      env:
+        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: false
+    - name: Upload results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: stock-data
+        path: debug_*.png
