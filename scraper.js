@@ -3,7 +3,7 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 
 const CONFIG = {
-  headless: true,
+  headless: 'new', // Updated to new headless mode
   timeout: 30000,
   userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
   popupSelectors: ['#wzrk-cancel', '.modal-close', '.close', '.btn-close', '.overlay-close'],
@@ -39,8 +39,11 @@ async function createBrowser() {
       '--disable-dev-shm-usage',
       '--disable-accelerated-2d-canvas',
       '--disable-gpu',
-      '--window-size=1920,1080'
-    ]
+      '--window-size=1920,1080',
+      '--single-process',
+      '--no-zygote'
+    ],
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined
   });
 }
 
@@ -65,7 +68,7 @@ async function saveToGoogleSheets(data) {
         'Weaknesses Count',
         'Opportunities Count',
         'Threats Count',
-        'Last Updated',
+        'Date',
       ],
     });
   }
@@ -154,8 +157,7 @@ async function scrapeMCEssentials(page) {
 async function scrapeSWOTAnalysis(page) {
   try {
     console.log('Looking for SWOT tab...');
-    await delay(2000); 
-    
+    await delay(2000);
     
     const swotTab = await findClickableElement(page, CONFIG.swotSelectors);
     
@@ -175,7 +177,6 @@ async function scrapeSWOTAnalysis(page) {
       await swotTab.click();
     }
 
-    
     try {
       await page.waitForSelector('.swot_feature', { visible: true, timeout: 15000 });
       console.log('SWOT content loaded successfully');
@@ -250,61 +251,61 @@ async function handlePopups(page) {
       console.log(`Closed popup with selector: ${selector}`);
       await delay(500);
     } catch (err) {
-      
+      // Continue if not found
     }
   }
 }
 
 (async () => {
-  const companies = [
-    { category: "refineries", name: 'Reliance Industries', slug: 'relianceindustries', sectorCode: 'RI' },
-    { category: "computers-software", name: 'TATA Consultancies', slug: 'tataconsultancyservices', sectorCode: 'TCS' },
-    { category: "computers-software", name: 'Infosys Limited', slug: 'infosys', sectorCode: 'IT' },
-    { category: "banks-private-sector", name: 'HDFC Bank Ltd', slug: 'hdfcbank', sectorCode: 'HDF01' },
-    { category: "banks-private-sector", name: 'ICICI Bank Limited', slug: 'icicibank', sectorCode: 'ICI02' },
-    { category: "personal-care", name: 'Hindustan Unilever Limited', slug: 'hindustanunilever', sectorCode: 'HU' },
-    { category: "banks-public-sector", name: 'State Bank of India', slug: 'statebankindia', sectorCode: 'SBI' },
-    { category: "banks-private-sector", name: 'Kotak Mahindra Bank Ltd', slug: 'kotakmahindrabank', sectorCode: 'KMB' },
-    { category: "diversified", name: 'ITC Ltd', slug: 'itc', sectorCode: 'ITC' },
-    { category: "infrastructure-general", name: 'Larsen & Toubro Ltd.', slug: 'larsentoubro', sectorCode: 'LT' }
-  ];
+  try {
+    const companies = [
+      { category: "refineries", name: 'Reliance Industries', slug: 'relianceindustries', sectorCode: 'RI' },
+      { category: "computers-software", name: 'TATA Consultancies', slug: 'tataconsultancyservices', sectorCode: 'TCS' },
+      { category: "computers-software", name: 'Infosys Limited', slug: 'infosys', sectorCode: 'IT' },
+      { category: "banks-private-sector", name: 'HDFC Bank Ltd', slug: 'hdfcbank', sectorCode: 'HDF01' },
+      { category: "banks-private-sector", name: 'ICICI Bank Limited', slug: 'icicibank', sectorCode: 'ICI02' },
+      { category: "personal-care", name: 'Hindustan Unilever Limited', slug: 'hindustanunilever', sectorCode: 'HU' },
+      { category: "banks-public-sector", name: 'State Bank of India', slug: 'statebankindia', sectorCode: 'SBI' },
+      { category: "banks-private-sector", name: 'Kotak Mahindra Bank Ltd', slug: 'kotakmahindrabank', sectorCode: 'KMB' },
+      { category: "diversified", name: 'ITC Ltd', slug: 'itc', sectorCode: 'ITC' },
+      { category: "infrastructure-general", name: 'Larsen & Toubro Ltd.', slug: 'larsentoubro', sectorCode: 'LT' }
+    ];
 
- // const browser = await createBrowser();
-  const browser = await puppeteer.launch({
-  executablePath: '/usr/bin/chromium-browser',
-  headless: true,
-});
+    const browser = await createBrowser();
+    const page = await browser.newPage();
+    await page.setUserAgent(CONFIG.userAgent);
+    await page.setDefaultTimeout(CONFIG.timeout);
 
-  const page = await browser.newPage();
-  await page.setUserAgent(CONFIG.userAgent);
-  await page.setDefaultTimeout(CONFIG.timeout);
+    const results = [];
 
-  const results = [];
+    for (const company of companies) {
+      const url = `https://www.moneycontrol.com/india/stockpricequote/${company.category}/${company.slug}/${company.sectorCode}`;
+      console.log(`\nFetching data for ${company.name}...`);
+      
+      const companyData = await scrapeCompanyDataWithRetry(page, url, company.name);
+      results.push(companyData);
+      
+      console.log(`Completed ${company.name}`);
+      await delay(2000);
+    }
 
-  for (const company of companies) {
-    const url = `https://www.moneycontrol.com/india/stockpricequote/${company.category}/${company.slug}/${company.sectorCode}`;
-    console.log(`\nFetching data for ${company.name}...`);
+    await browser.close();
     
-    const companyData = await scrapeCompanyDataWithRetry(page, url, company.name);
-    results.push(companyData);
+    const sheetData = results.map(r => ({
+      'Company': r.company,
+      'MC Essentials': r.essentials,
+      'Strengths Count': r.strengths,
+      'Weaknesses Count': r.weaknesses,
+      'Opportunities Count': r.opportunities,
+      'Threats Count': r.threats,
+      'Date': r.timestamp
+    }));
+
+    await saveToGoogleSheets(sheetData);
     
-    console.log(`Completed ${company.name}`);
-    await delay(2000);
+    console.log('\nScraping completed. Data saved to Google Sheets');
+  } catch (error) {
+    console.error('Fatal error:', error);
+    process.exit(1);
   }
-
-  await browser.close();
-  
-  const sheetData = results.map(r => ({
-    'Company': r.company,
-    'MC Essentials': r.essentials,
-    'Strengths Count': r.strengths,
-    'Weaknesses Count': r.weaknesses,
-    'Opportunities Count': r.opportunities,
-    'Threats Count': r.threats,
-    'Date': r.timestamp
-  }));
-
-  await saveToGoogleSheets(sheetData);
-  
-  console.log('\nScraping completed. Data saved to Google Sheets');
 })();
