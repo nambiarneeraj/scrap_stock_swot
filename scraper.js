@@ -20,8 +20,7 @@ const CONFIG = {
   sheetName: 'StockData',
   serviceAccount: {
     email: 'stockmarketdata@stock-data-461213.iam.gserviceAccount.com',
-    privateKey: '-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCossofJJiuSPO2\nOJNpdjwklekzYvD9Huh0GfOXbxoNCoecDJ7PeEr2pcLyLRbo+6DJ18/E8HGmLr4+\nWMrnL5UYCANoSGHkqJaC9jMvpJdrflOZEgfn1k7VeSAxYa0Ja7p3eIqfILVbKwq3\nnyKala/HzyhN2/JCWe5enooK/OAAuEFRDyy9j7653d/xVf9mxxuPy4kGgbkYDfxc\n+d9nkqhNoWtuKMV2LC+1PtJcTP5npjR/xIpy8y8QF/Xzta43d+8lGIoZArr4mAxa\nuI8YtHvgTdHRkmoODTYJiWbEjUbkkej7FXqJSWNu3W8erCZnvoSGItzhHaHWkjBv\n+ZSOfYJlAgMBAAECggEADmwQ9FsJyoYy5g/6jXhhAxrl1h5ntKjg/cjLygh8VUN7\n/UIYjNG5Gh9o7F26da4wotDjOSNgZyRCRplxgnsCgT/Xurr/BrAuN4GaaQ1//Hdo\ntWj7NnDCsJfFKGbNukTbEVeqBWY9QU8+s7Zt6OiFhjMWb2f8U0iiixt9EoKbGLSE\nLqmBuLeUBrceda4NT1U1m+QbynbkyfrYn1E21NsmN3Wq743X+A2tUNx5VvuilWJK\niAps/fi93GfBY1n2UoH47Xy4W5klr3+hc5Ru1zHTADd5gcCDQh8qxMGQku8ZB8Up\nQDEO6y2ehWPUoxSBXSYT3btxa+Z7zA74tK4npXNaiQKBgQDlkW2ka6WbB0zJiQV+\nWLXjqKBIDVQ4uwbPGG8kJ62Wp19AjvUAzttY9TqPrAyqQ8/MzYjp4G9UWup8bc3B\nZeHtk0c3vg4dh2K5wVOGPE8QHJmO3EZ2GEJvnH7r74GyjlMrozeoIQB8Pulb3kst\nAKHNCGYZcxpYZUlgLdRFW1zL3wKBgQC8HzaiMHtw2QqcEGrU/aZB4vXBKEggwVi3\nuT7NwrN9i3hk74GAgUMIRfT9iVUcVONwrFKJEZqwfcMmqU0Cax0v7OfrK2LM9+a+\nqwludYqyPLEOuPb+bAD6s1FCUQe+NJbSl4cokhO2tVHejhfrwA5SwmXAMDABVb45\nT01Wo1Y6OwKBgHI1M3LFCxJhQ1ZQEKeWwoaL8ZFm8Ct5AB4vbbty8e0tPzoC5OiO\nAJn1BjlLwtFCAzNEXYTc3wX8ZQOaLO62HPvwdVHJ/4O5QuhewYrangrJ76se8v71\nerfEB3ChKskF/WKMRLgkEvW85qOJp6Sv188FCqZGmSi42xQ6OIx4s2XJAoGAXo8Z\n+SCBi9GtAZFHAdSVs1yPxw2mY8CMBZ15sheB/UMTuzigUaWnugrgAGj9fQY2ZLZZ\nrkhJBxnP9Cj5apPI0gQ09wKR4RFizMhQL1Op6bmUDiBvFqfXPizQVZNBXxw0C5ra\n90ul2Rr/Ee0+nOOmz3ajip0uJB2jRk9UQo5Lk20CgYAlTYu0NoY+yFSrdLiLnf+I\nhWJnG3wRgARdqdXht6mWYBMMwhJWnIBQ3h7wUCyWQ/Xk7BiTO42Xv/1m7vlmkULP\nuR25KA8Yn6rc+w0sL/M/AM54G8PByqKACdHZBMKi3d8KzCiUvVfU6cK6C3FgR40Q\nFIDsaOSNMwF6LBpQUoWWCw==\n-----END PRIVATE KEY-----\n'.replace(/\\n/g, '\n')
-  }
+    privateKey: '-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCwueY5d0Weo+/Y\nbniiFVce0IT9kBfWynbMw87AHmG0B/SwsJHAvWDSywXFpV/v/sNCEKEJK3tP1J0X\nqzG5ELwESv1I4Xxm/a9u+E79Y803GR83dQoEe/9XJxWWnyo7oo0KKnTUcdQg4WSC\n0oJzrHXz59oYOuRohYSPo+ukpfIXFbK/JebHJIm/+FZr4ftrq1TVH/eScP0ah8sr\nR7rdUPxcZ/lU573W+31zf1VGk2YmN/q3agFq8QG8mJT/fZUEofnbtNCEVbFZwWQM\nkTJ3EBZAnwAtxE603K/gPbiwwDYuZj9JaI4gmdwuKNy7pNeaV99KQ/jANOxB5lk4\nwUF+dFZ3AgMBAAECggEAAUHsC8qiedosHGZ6K0UVmp2HOhAAFheDYuTzIADXVyLw\nsHUr2arp+SCtXiuqvsLEUZWxX6b/OKEzAPZx4yGQWkN3q+tsKYYdQnU33VZhdnE8\n/KBePYvtqYlt/jq3Cozsjf72rTBQ1G8Qz7F/G3hFr+zywKtinAUfMq/K6cqt1KY1\ng557kRcy6gu1PZde/vv8rQTVVKLN9q7zcIwaDmTHvFDD11wJ3ISfqXQXTNuqxV03\n0xXUBF8B6EuvGNuN8E9Crqyv8kPyum8bAeHTd9zTzptvECDcu2ldlVdhGx6iE3fB\nXSs1bz/UZItNvlA287nN95P4Uf4NK9yic04RN+G68QKBgQDcrzZMpPcO5rDkoAPh\nTGuLAWsiXfpjADSSMvb6N316UrJtMugA+gHun5jPRRZ88x+y/krFgGaE36tpSahy\nF5IPKzUV4UGbEbGTxPA0XOM7f5rOeoW6HzFPLRF7zHS2qpgnfeT+ob/HWzQ3u8uh\nHRfcANE47DAOYtHMzTwIeKmRqQKBgQDNAdj+GJuiye64oaCpY7Ioy2AZwDEaebVr\nYlWLfgZOv7C0I4dkuTV6qB54T0aVjphEoPmqVNfr9AY1HH8+cuZiCH8FsCDmT9ap\nfkAuw9NfLn5tmDQLMYWAhIgJA+l9/t2OaarBMyICUe7QZRBUWVXGJFYTeWtAAB/n\nw56NxiP7HwKBgCy0Ya+NC289VEA8Gg0dyftSwj0oBHzhocSsBlQRwZ1x+ysb0NvB\nyXppYi86s5+EMLu1v7falun71WFyxmi2VaQ1AH/6LawYHXztvCsfVfjLlLSXJVfa\n0cZUPuJxPIN0c3YsjqL2aT8dPqq7pDhzCE5M7BU341RGuHFgcfTVXKRhAoGABO+o\nc+XPyYmnL9bkcW+vGIBdHgGcrRCFJ8LEYIl2SWsgLBY26lvzR7LImQj/oBZA4FYn\n7MwCLvI/PAQlpDFMDsw5kr9860680nPxw65/ZmlOLgFeL27P0hpe1Ci99ISwfP9a\nVzCN/xRN9cKZNA66m/y//dQMmwvluMTjCnLc5u0CgYEApmTlmGYK+VpiTBYbqDsZ\neu+EMFFUVGhRUTQ1qU/GrkNOVkyUE2gULaN7h0yxEfT7i8VnPxChJ9HvMp55AtKj\nvFtDjzR/utN8paLl4KQdSpX/X4nxn3rGslzKHzJCI2kLUeaAiXTUpXCKy1AZV+y7\ncBH8CCkMOtHrvigXeH9jduY=\n-----END PRIVATE KEY-----\n'
 };
 
 function extractNumbers(text) {
@@ -250,15 +249,15 @@ async function handlePopups(page) {
   try {
     const companies = [
       { category: "refineries", name: 'Reliance Industries', slug: 'relianceindustries', sectorCode: 'RI' },
-      { category: "computers-software", name: 'TATA Consultancies', slug: 'tataconsultancyservices', sectorCode: 'TCS' },
-      { category: "computers-software", name: 'Infosys Limited', slug: 'infosys', sectorCode: 'IT' },
-      { category: "banks-private-sector", name: 'HDFC Bank Ltd', slug: 'hdfcbank', sectorCode: 'HDF01' },
-      { category: "banks-private-sector", name: 'ICICI Bank Limited', slug: 'icicibank', sectorCode: 'ICI02' },
-      { category: "personal-care", name: 'Hindustan Unilever Limited', slug: 'hindustanunilever', sectorCode: 'HU' },
-      { category: "banks-public-sector", name: 'State Bank of India', slug: 'statebankindia', sectorCode: 'SBI' },
-      { category: "banks-private-sector", name: 'Kotak Mahindra Bank Ltd', slug: 'kotakmahindrabank', sectorCode: 'KMB' },
-      { category: "diversified", name: 'ITC Ltd', slug: 'itc', sectorCode: 'ITC' },
-      { category: "infrastructure-general", name: 'Larsen & Toubro Ltd.', slug: 'larsentoubro', sectorCode: 'LT' }
+     // { category: "computers-software", name: 'TATA Consultancies', slug: 'tataconsultancyservices', sectorCode: 'TCS' },
+      //{ category: "computers-software", name: 'Infosys Limited', slug: 'infosys', sectorCode: 'IT' },
+      //{ category: "banks-private-sector", name: 'HDFC Bank Ltd', slug: 'hdfcbank', sectorCode: 'HDF01' },
+      //{ category: "banks-private-sector", name: 'ICICI Bank Limited', slug: 'icicibank', sectorCode: 'ICI02' },
+      //{ category: "personal-care", name: 'Hindustan Unilever Limited', slug: 'hindustanunilever', sectorCode: 'HU' },
+      //{ category: "banks-public-sector", name: 'State Bank of India', slug: 'statebankindia', sectorCode: 'SBI' },
+      //{ category: "banks-private-sector", name: 'Kotak Mahindra Bank Ltd', slug: 'kotakmahindrabank', sectorCode: 'KMB' },
+      //{ category: "diversified", name: 'ITC Ltd', slug: 'itc', sectorCode: 'ITC' },
+      //{ category: "infrastructure-general", name: 'Larsen & Toubro Ltd.', slug: 'larsentoubro', sectorCode: 'LT' }
     ];
 
     const browser = await createBrowser();
