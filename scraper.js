@@ -43,7 +43,8 @@ async function createBrowser() {
       '--single-process',
       '--no-zygote'
     ],
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
+    protocolTimeout: 180000 // Increased protocol timeout to 3 minutes
   });
 }
 
