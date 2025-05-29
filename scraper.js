@@ -248,7 +248,7 @@ async function handlePopups(page) {
 (async () => {
   try {
     const companies = [
-      { category: "refineries", name: 'Reliance Industries', slug: 'relianceindustries', sectorCode: 'RI' },
+      { category: "refineries", name: 'Reliance Industries', slug: 'relianceindustries', sectorCode: 'RI' }
      // { category: "computers-software", name: 'TATA Consultancies', slug: 'tataconsultancyservices', sectorCode: 'TCS' },
       //{ category: "computers-software", name: 'Infosys Limited', slug: 'infosys', sectorCode: 'IT' },
       //{ category: "banks-private-sector", name: 'HDFC Bank Ltd', slug: 'hdfcbank', sectorCode: 'HDF01' },
