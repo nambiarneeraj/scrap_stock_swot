@@ -12,8 +12,8 @@ jobs:
     - name: Install dependencies and Puppeteer browser
       run: |
         npm install
-        # Ensure the puppeteer executable has execute permissions
-        chmod +x $(npm bin)/puppeteer
+        # Ensure the puppeteer executable has execute permissions using a direct path
+        chmod +x ./node_modules/.bin/puppeteer
         npx puppeteer install # This command downloads the compatible browser for Puppeteer
     - name: Run scraper
       timeout-minutes: 15
