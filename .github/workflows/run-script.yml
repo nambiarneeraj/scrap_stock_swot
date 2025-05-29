@@ -9,17 +9,19 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: '18'
-    - name: Install dependencies
+    - name: Install dependencies and Puppeteer browser
       run: |
         npm install
-        npm install puppeteer
+        npx puppeteer install # This command downloads the compatible browser for Puppeteer
     - name: Run scraper
       timeout-minutes: 15
       run: node scraper.js
       env:
-        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: false
+        # PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: false is not needed here, as npx puppeteer install handles the download
+        # The executablePath in scraper.js will automatically find the browser installed by npx puppeteer install
+        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: false # Keeping this as it was in your original env, though it might be redundant now.
     - name: Upload results
-      uses: actions/upload-artifact@v4 # Changed from v3 to v4
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: stock-data
