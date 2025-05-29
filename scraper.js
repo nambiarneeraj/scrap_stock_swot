@@ -249,7 +249,17 @@ async function handlePopups(page) {
 (async () => {
   try {
     const companies = [
-      { category: "refineries", name: 'Reliance Industries', slug: 'relianceindustries', sectorCode: 'RI' }];
+       { category: "refineries", name: 'Reliance Industries', slug: 'relianceindustries', sectorCode: 'RI' },
+      { category: "computers-software", name: 'TATA Consultancies', slug: 'tataconsultancyservices', sectorCode: 'TCS' },
+      { category: "computers-software", name: 'Infosys Limited', slug: 'infosys', sectorCode: 'IT' },
+      { category: "banks-private-sector", name: 'HDFC Bank Ltd', slug: 'hdfcbank', sectorCode: 'HDF01' },
+      { category: "banks-private-sector", name: 'ICICI Bank Limited', slug: 'icicibank', sectorCode: 'ICI02' },
+      { category: "personal-care", name: 'Hindustan Unilever Limited', slug: 'hindustanunilever', sectorCode: 'HU' },
+      { category: "banks-public-sector", name: 'State Bank of India', slug: 'statebankindia', sectorCode: 'SBI' },
+      { category: "banks-private-sector", name: 'Kotak Mahindra Bank Ltd', slug: 'kotakmahindrabank', sectorCode: 'KMB' },
+      { category: "diversified", name: 'ITC Ltd', slug: 'itc', sectorCode: 'ITC' },
+      { category: "infrastructure-general", name: 'Larsen & Toubro Ltd.', slug: 'larsentoubro', sectorCode: 'LT' }
+    ];
 
     const browser = await createBrowser();
     const page = await browser.newPage();
