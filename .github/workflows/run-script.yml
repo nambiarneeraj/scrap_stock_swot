@@ -10,14 +10,19 @@ jobs:
       with:
         node-version: '18'
     - name: Install dependencies
-      run: npm install # Only install npm dependencies; Puppeteer will handle browser download
+      run: npm install
+    - name: Install Google Chrome Stable
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable # Install a stable version of Chrome
     - name: Run scraper
       timeout-minutes: 15
       run: node scraper.js
       env:
-        # Set PUPPETEER_SKIP_CHROMIUM_DOWNLOAD to false to ensure Puppeteer downloads Chrome if not found.
-        # No need for explicit 'npx puppeteer install' if this is set to false.
-        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: false
+        # Tell Puppeteer to skip its own Chromium download and use the system-installed Chrome
+        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+        # Explicitly set the path to the system-installed Chrome executable
+        PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
     - name: Upload results
       uses: actions/upload-artifact@v4
       if: always()
