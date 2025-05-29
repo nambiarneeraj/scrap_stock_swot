@@ -4,7 +4,7 @@ import { JWT } from 'google-auth-library';
 
 const CONFIG = {
   headless: 'new',
-  timeout: 60000, // Increased timeout to 60 seconds
+  timeout: 60000,
   userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
   popupSelectors: ['#wzrk-cancel', '.modal-close', '.close', '.btn-close', '.overlay-close'],
   swotSelectors: [
@@ -20,7 +20,7 @@ const CONFIG = {
   sheetName: 'StockData',
   serviceAccount: {
     email: 'stockmarketdata@stock-data-461213.iam.gserviceAccount.com',
-    privateKey: '-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCossofJJiuSPO2\nOJNpdjwklekzYvD9Huh0GfOXbxoNCoecDJ7PeEr2pcLyLRbo+6DJ18/E8HGmLr4+\nWMrnL5UYCANoSGHkqJaC9jMvpJdrflOZEgfn1k7VeSAxYa0Ja7p3eIqfILVbKwq3\nnyKala/HzyhN2/JCWe5enooK/OAAuEFRDyy9j7653d/xVf9mxxuPy4kGgbkYDfxc\n+d9nkqhNoWtuKMV2LC+1PtJcTP5npjR/xIpy8y8QF/Xzta43d+8lGIoZArr4mAxa\nuI8YtHvgTdHRkmoODTYJiWbEjUbkkej7FXqJSWNu3W8erCZnvoSGItzhHaHWkjBv\n+ZSOfYJlAgMBAAECggEADmwQ9FsJyoYy5g/6jXhhAxrl1h5ntKjg/cjLygh8VUN7\n/UIYjNG5Gh9o7F26da4wotDjOSNgZyRCRplxgnsCgT/Xurr/BrAuN4GaaQ1//Hdo\ntWj7NnDCsJfFKGbNukTbEVeqBWY9QU8+s7Zt6OiFhjMWb2f8U0iiixt9EoKbGLSE\nLqmBuLeUBrceda4NT1U1m+QbynbkyfrYn1E21NsmN3Wq743X+A2tUNx5VvuilWJK\niAps/fi93GfBY1n2UoH47Xy4W5klr3+hc5Ru1zHTADd5gcCDQh8qxMGQku8ZB8Up\nQDEO6y2ehWPUoxSBXSYT3btxa+Z7zA74tK4npXNaiQKBgQDlkW2ka6WbB0zJiQV+\nWLXjqKBIDVQ4uwbPGG8kJ62Wp19AjvUAzttY9TqPrAyqQ8/MzYjp4G9UWup8bc3B\nZeHtk0c3vg4dh2K5wVOGPE8QHJmO3EZ2GEJvnH7r74GyjlMrozeoIQB8Pulb3kst\nAKHNCGYZcxpYZUlgLdRFW1zL3wKBgQC8HzaiMHtw2QqcEGrU/aZB4vXBKEggwVi3\nuT7NwrN9i3hk74GAgUMIRfT9iVUcVONwrFKJEZqwfcMmqU0Cax0v7OfrK2LM9+a+\nqwludYqyPLEOuPb+bAD6s1FCUQe+NJbSl4cokhO2tVHejhfrwA5SwmXAMDABVb45\nT01Wo1Y6OwKBgHI1M3LFCxJhQ1ZQEKeWwoaL8ZFm8Ct5AB4vbbty8e0tPzoC5OiO\nAJn1BjlLwtFCAzNEXYTc3wX8ZQOaLO62HPvwdVHJ/4O5QuhewYrangrJ76se8v71\nerfEB3ChKskF/WKMRLgkEvW85qOJp6Sv188FCqZGmSi42xQ6OIx4s2XJAoGAXo8Z\n+SCBi9GtAZFHAdSVs1yPxw2mY8CMBZ15sheB/UMTuzigUaWnugrgAGj9fQY2ZLZZ\nrkhJBxnP9Cj5apPI0gQ09wKR4RFizMhQL1Op6bmUDiBvFqfXPizQVZNBXxw0C5ra\n90ul2Rr/Ee0+nOOmz3ajip0uJB2jRk9UQo5Lk20CgYAlTYu0NoY+yFSrdLiLnf+I\nhWJnG3wRgARdqdXht6mWYBMMwhJWnIBQ3h7wUCyWQ/Xk7BiTO42Xv/1m7vlmkULP\nuR25KA8Yn6rc+w0sL/M/AM54G8PByqKACdHZBMKi3d8KzCiUvVfU6cK6C3FgR40Q\nFIDsaOSNMwF6LBpQUoWWCw==\n-----END PRIVATE KEY-----\n'
+    privateKey: '-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCossofJJiuSPO2\nOJNpdjwklekzYvD9Huh0GfOXbxoNCoecDJ7PeEr2pcLyLRbo+6DJ18/E8HGmLr4+\nWMrnL5UYCANoSGHkqJaC9jMvpJdrflOZEgfn1k7VeSAxYa0Ja7p3eIqfILVbKwq3\nnyKala/HzyhN2/JCWe5enooK/OAAuEFRDyy9j7653d/xVf9mxxuPy4kGgbkYDfxc\n+d9nkqhNoWtuKMV2LC+1PtJcTP5npjR/xIpy8y8QF/Xzta43d+8lGIoZArr4mAxa\nuI8YtHvgTdHRkmoODTYJiWbEjUbkkej7FXqJSWNu3W8erCZnvoSGItzhHaHWkjBv\n+ZSOfYJlAgMBAAECggEADmwQ9FsJyoYy5g/6jXhhAxrl1h5ntKjg/cjLygh8VUN7\n/UIYjNG5Gh9o7F26da4wotDjOSNgZyRCRplxgnsCgT/Xurr/BrAuN4GaaQ1//Hdo\ntWj7NnDCsJfFKGbNukTbEVeqBWY9QU8+s7Zt6OiFhjMWb2f8U0iiixt9EoKbGLSE\nLqmBuLeUBrceda4NT1U1m+QbynbkyfrYn1E21NsmN3Wq743X+A2tUNx5VvuilWJK\niAps/fi93GfBY1n2UoH47Xy4W5klr3+hc5Ru1zHTADd5gcCDQh8qxMGQku8ZB8Up\nQDEO6y2ehWPUoxSBXSYT3btxa+Z7zA74tK4npXNaiQKBgQDlkW2ka6WbB0zJiQV+\nWLXjqKBIDVQ4uwbPGG8kJ62Wp19AjvUAzttY9TqPrAyqQ8/MzYjp4G9UWup8bc3B\nZeHtk0c3vg4dh2K5wVOGPE8QHJmO3EZ2GEJvnH7r74GyjlMrozeoIQB8Pulb3kst\nAKHNCGYZcxpYZUlgLdRFW1zL3wKBgQC8HzaiMHtw2QqcEGrU/aZB4vXBKEggwVi3\nuT7NwrN9i3hk74GAgUMIRfT9iVUcVONwrFKJEZqwfcMmqU0Cax0v7OfrK2LM9+a+\nqwludYqyPLEOuPb+bAD6s1FCUQe+NJbSl4cokhO2tVHejhfrwA5SwmXAMDABVb45\nT01Wo1Y6OwKBgHI1M3LFCxJhQ1ZQEKeWwoaL8ZFm8Ct5AB4vbbty8e0tPzoC5OiO\nAJn1BjlLwtFCAzNEXYTc3wX8ZQOaLO62HPvwdVHJ/4O5QuhewYrangrJ76se8v71\nerfEB3ChKskF/WKMRLgkEvW85qOJp6Sv188FCqZGmSi42xQ6OIx4s2XJAoGAXo8Z\n+SCBi9GtAZFHAdSVs1yPxw2mY8CMBZ15sheB/UMTuzigUaWnugrgAGj9fQY2ZLZZ\nrkhJBxnP9Cj5apPI0gQ09wKR4RFizMhQL1Op6bmUDiBvFqfXPizQVZNBXxw0C5ra\n90ul2Rr/Ee0+nOOmz3ajip0uJB2jRk9UQo5Lk20CgYAlTYu0NoY+yFSrdLiLnf+I\nhWJnG3wRgARdqdXht6mWYBMMwhJWnIBQ3h7wUCyWQ/Xk7BiTO42Xv/1m7vlmkULP\nuR25KA8Yn6rc+w0sL/M/AM54G8PByqKACdHZBMKi3d8KzCiUvVfU6cK6C3FgR40Q\nFIDsaOSNMwF6LBpQUoWWCw==\n-----END PRIVATE KEY-----\n'.replace(/\\n/g, '\n')
   }
 };
 
@@ -44,7 +44,7 @@ async function createBrowser() {
       '--no-zygote'
     ],
     executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
-    protocolTimeout: 180000 // Increased protocol timeout to 3 minutes
+    protocolTimeout: 180000
   });
 }
 
