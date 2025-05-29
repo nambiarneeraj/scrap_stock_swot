@@ -269,7 +269,11 @@ async function handlePopups(page) {
     { category: "infrastructure-general", name: 'Larsen & Toubro Ltd.', slug: 'larsentoubro', sectorCode: 'LT' }
   ];
 
-  const browser = await createBrowser();
+ // const browser = await createBrowser();
+ const browser = await puppeteer.launch({
+  executablePath: '/usr/bin/chromium-browser',
+  headless: true,
+});
   const page = await browser.newPage();
   await page.setUserAgent(CONFIG.userAgent);
   await page.setDefaultTimeout(CONFIG.timeout);
