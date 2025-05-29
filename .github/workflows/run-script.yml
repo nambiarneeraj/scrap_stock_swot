@@ -9,19 +9,15 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: '18'
-    - name: Install dependencies and Puppeteer browser
-      run: |
-        npm install
-        # Ensure the puppeteer executable has execute permissions using a direct path
-        chmod +x ./node_modules/.bin/puppeteer
-        npx puppeteer install # This command downloads the compatible browser for Puppeteer
+    - name: Install dependencies
+      run: npm install # Only install npm dependencies; Puppeteer will handle browser download
     - name: Run scraper
       timeout-minutes: 15
       run: node scraper.js
       env:
-        # PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: false is not needed here, as npx puppeteer install handles the download
-        # The executablePath in scraper.js will automatically find the browser installed by npx puppeteer install
-        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: false # Keeping this as it was in your original env, though it might be redundant now.
+        # Set PUPPETEER_SKIP_CHROMIUM_DOWNLOAD to false to ensure Puppeteer downloads Chrome if not found.
+        # No need for explicit 'npx puppeteer install' if this is set to false.
+        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: false
     - name: Upload results
       uses: actions/upload-artifact@v4
       if: always()
