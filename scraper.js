@@ -4,7 +4,7 @@ import { JWT } from 'google-auth-library';
 
 const CONFIG = {
   headless: 'new',
-  timeout: 30000,
+  timeout: 60000, // Increased timeout to 60 seconds
   userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
   popupSelectors: ['#wzrk-cancel', '.modal-close', '.close', '.btn-close', '.overlay-close'],
   swotSelectors: [
