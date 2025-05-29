@@ -1,5 +1,9 @@
 name: Scrape Stock Data
-on: [push, schedule]
+on:
+  push:
+  schedule:
+    # Runs every day at 3:30 AM UTC, which is 9:00 AM IST
+    - cron: '30 3 * * *'
 
 jobs:
   scrape:
@@ -14,14 +18,12 @@ jobs:
     - name: Install Google Chrome Stable
       run: |
         sudo apt-get update
-        sudo apt-get install -y google-chrome-stable # Install a stable version of Chrome
+        sudo apt-get install -y google-chrome-stable
     - name: Run scraper
       timeout-minutes: 15
       run: node scraper.js
       env:
-        # Tell Puppeteer to skip its own Chromium download and use the system-installed Chrome
         PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
-        # Explicitly set the path to the system-installed Chrome executable
         PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
     - name: Upload results
       uses: actions/upload-artifact@v4
